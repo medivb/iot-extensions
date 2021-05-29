@@ -8,5 +8,19 @@ basic.forever(function () {
     OLED.clear()
     OLED.writeString("Dust (ug/m3):")
     OLED.writeNum(Environment.ReadDust(DigitalPin.P13, AnalogPin.P1))
+    OLED.newLine()
+    OLED.writeString("Temperature (c):")
+    OLED.writeNum(Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C))
+    OLED.newLine()
+    OLED.writeString("Humidity (%):")
+    OLED.writeNum(Environment.octopus_BME280(Environment.BME280_state.BME280_humidity))
+    OLED.newLine()
+    OLED.writeString("Pressure (hPa):")
+    OLED.writeNum(Environment.octopus_BME280(Environment.BME280_state.BME280_pressure))
     basic.pause(60000)
+    if (Environment.ReadDust(DigitalPin.P13, AnalogPin.P1) < 45) {
+        basic.showIcon(IconNames.Heart)
+    } else {
+        basic.showIcon(IconNames.Skull)
+    }
 })
