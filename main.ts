@@ -6,7 +6,7 @@ if (ESP8266_IoT.wifiState(true)) {
 }
 basic.forever(function () {
     OLED.clear()
-    OLED.writeStringNewLine("Dust (ug/m3):")
+    OLED.writeString("Dust (ug/m3):")
     OLED.writeNum(Environment.ReadDust(DigitalPin.P13, AnalogPin.P1))
     basic.pause(60000)
 })
