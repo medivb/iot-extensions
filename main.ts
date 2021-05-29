@@ -1,3 +1,6 @@
+input.onButtonPressed(Button.A, function () {
+	
+})
 ESP8266_IoT.initWIFI(SerialPin.P8, SerialPin.P12, BaudRate.BaudRate115200)
 ESP8266_IoT.connectWifi("Broeknet", "B1vidhd10idl")
 OLED.init(128, 64)
@@ -5,6 +8,15 @@ if (ESP8266_IoT.wifiState(true)) {
     basic.showString("Online")
 }
 basic.forever(function () {
+    ESP8266_IoT.connectThingSpeak()
+    ESP8266_IoT.setData(
+    "3OQIFVV3D5KWUGMX",
+    Environment.ReadDust(DigitalPin.P13, AnalogPin.P1),
+    Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C),
+    Environment.octopus_BME280(Environment.BME280_state.BME280_humidity),
+    Environment.octopus_BME280(Environment.BME280_state.BME280_pressure)
+    )
+    ESP8266_IoT.uploadData()
     OLED.clear()
     OLED.writeString("Dust (ug/m3):")
     OLED.writeNum(Environment.ReadDust(DigitalPin.P13, AnalogPin.P1))
