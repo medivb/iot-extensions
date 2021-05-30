@@ -1,6 +1,3 @@
-input.onButtonPressed(Button.A, function () {
-	
-})
 ESP8266_IoT.initWIFI(SerialPin.P8, SerialPin.P12, BaudRate.BaudRate115200)
 ESP8266_IoT.connectWifi("Broeknet", "B1vidhd10idl")
 OLED.init(128, 64)
@@ -14,12 +11,20 @@ basic.forever(function () {
     Environment.ReadDust(DigitalPin.P13, AnalogPin.P1),
     Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C),
     Environment.octopus_BME280(Environment.BME280_state.BME280_humidity),
-    Environment.octopus_BME280(Environment.BME280_state.BME280_pressure)
+    Environment.octopus_BME280(Environment.BME280_state.BME280_pressure),
+    Environment.ReadPM10(DigitalPin.P13),
+    Environment.ReadPM25(DigitalPin.P13)
     )
     ESP8266_IoT.uploadData()
     OLED.clear()
     OLED.writeString("Dust (ug/m3):")
     OLED.writeNum(Environment.ReadDust(DigitalPin.P13, AnalogPin.P1))
+    OLED.newLine()
+    OLED.writeString("pm10 (ug/m3):")
+    OLED.writeNum(Environment.ReadPM10(DigitalPin.P13))
+    OLED.newLine()
+    OLED.writeString("pm2.5 (ug/m3):")
+    OLED.writeNum(Environment.ReadPM25(DigitalPin.P13))
     OLED.newLine()
     OLED.writeString("Temperature (c):")
     OLED.writeNum(Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C))
