@@ -12,8 +12,8 @@ basic.forever(function () {
     Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C),
     Environment.octopus_BME280(Environment.BME280_state.BME280_humidity),
     Environment.octopus_BME280(Environment.BME280_state.BME280_pressure),
-    Environment.ReadPM10(DigitalPin.P13),
-    Environment.ReadPM25(DigitalPin.P13)
+    0,
+    0
     )
     ESP8266_IoT.uploadData()
     OLED.clear()
@@ -21,10 +21,10 @@ basic.forever(function () {
     OLED.writeNum(Environment.ReadDust(DigitalPin.P13, AnalogPin.P1))
     OLED.newLine()
     OLED.writeString("pm10 (ug/m3):")
-    OLED.writeNum(Environment.ReadPM10(DigitalPin.P13))
+    OLED.writeNum(0)
     OLED.newLine()
     OLED.writeString("pm2.5 (ug/m3):")
-    OLED.writeNum(Environment.ReadPM25(DigitalPin.P13))
+    OLED.writeNum(0)
     OLED.newLine()
     OLED.writeString("Temperature (c):")
     OLED.writeNum(Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C))
@@ -34,7 +34,7 @@ basic.forever(function () {
     OLED.newLine()
     OLED.writeString("Pressure (hPa):")
     OLED.writeNum(Environment.octopus_BME280(Environment.BME280_state.BME280_pressure))
-    if (Environment.ReadDust(DigitalPin.P13, AnalogPin.P1) < 45) {
+    if (Environment.ReadDust(DigitalPin.P13, AnalogPin.P1) < 36) {
         basic.showIcon(IconNames.Heart)
     } else {
         basic.showIcon(IconNames.Skull)
