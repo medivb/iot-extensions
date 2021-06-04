@@ -20,7 +20,7 @@ basic.forever(function () {
     OLED.writeString("Dust (ug/m3):")
     OLED.writeNum(Environment.ReadDust(DigitalPin.P13, AnalogPin.P1))
     OLED.newLine()
-    OLED.writeString("Noise (dB)")
+    OLED.writeString("Noise (dB):")
     OLED.writeNum(Environment.ReadNoise(AnalogPin.P2))
     OLED.newLine()
     OLED.writeString("Temperature (c):")
