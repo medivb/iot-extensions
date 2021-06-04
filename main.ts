@@ -36,5 +36,5 @@ basic.forever(function () {
     } else {
         basic.showIcon(IconNames.Skull)
     }
-    basic.pause(60000)
+    basic.pause(30000)
 })
