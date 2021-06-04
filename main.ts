@@ -34,7 +34,7 @@ basic.forever(function () {
     if (Environment.ReadDust(DigitalPin.P13, AnalogPin.P1) < 36) {
         basic.showIcon(IconNames.Heart)
     } else {
-        basic.showIcon(IconNames.Skull)
+        basic.showIcon(IconNames.No)
     }
-    basic.pause(30000)
+    basic.pause(60000)
 })
