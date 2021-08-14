@@ -31,7 +31,7 @@ basic.forever(function () {
     OLED.newLine()
     OLED.writeString("Pressure (hPa):")
     OLED.writeNum(Environment.octopus_BME280(Environment.BME280_state.BME280_pressure))
-    if (Environment.ReadDust(DigitalPin.P13, AnalogPin.P1) < 36) {
+    if (Environment.ReadDust(DigitalPin.P13, AnalogPin.P1) < 55) {
         basic.showIcon(IconNames.Heart)
     } else {
         basic.showIcon(IconNames.No)
