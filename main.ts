@@ -17,7 +17,7 @@ basic.forever(function () {
     )
     ESP8266_IoT.uploadData()
     OLED.clear()
-    OLED.writeStringNewLine("*** CURRENT VALUES ***")
+    OLED.writeStringNewLine("** CURRENT VALUES **")
     OLED.newLine()
     OLED.writeString("Dust (ug/m3):")
     OLED.writeNum(Environment.ReadDust(DigitalPin.P13, AnalogPin.P1))
