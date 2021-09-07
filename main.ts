@@ -12,16 +12,15 @@ basic.forever(function () {
     Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C),
     Environment.octopus_BME280(Environment.BME280_state.BME280_humidity),
     Environment.octopus_BME280(Environment.BME280_state.BME280_pressure),
-    Environment.ReadNoise(AnalogPin.P4),
+    0,
     0
     )
     ESP8266_IoT.uploadData()
     OLED.clear()
+    OLED.writeStringNewLine("*** CURRENT VALUES ***")
+    OLED.newLine()
     OLED.writeString("Dust (ug/m3):")
     OLED.writeNum(Environment.ReadDust(DigitalPin.P13, AnalogPin.P1))
-    OLED.newLine()
-    OLED.writeString("Noise (dB):")
-    OLED.writeNum(Environment.ReadNoise(AnalogPin.P4))
     OLED.newLine()
     OLED.writeString("Temperature (c):")
     OLED.writeNum(Environment.octopus_BME280(Environment.BME280_state.BME280_temperature_C))
